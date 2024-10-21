@@ -1,0 +1,20 @@
+# Ensure that the latest version of Ubuntu 22.04 is running
+FROM ubuntu:latest
+# Update apt using apt-get update
+RUN apt-get update
+# Upgrade currently installed software through APT
+RUN apt-get upgrade -y
+# Install python3
+RUN apt-get install -y python3
+# Install python3-pip
+RUN apt-get install -y python3-pip
+# Install flask
+RUN pip3 install flask
+# Use pip3 to install flask-cors
+RUN pip3 install Flask-CORS
+# Use "app" as the working directory.
+WORKDIR /app
+# Copy the Python file to Docker image.
+COPY api.py /app
+# Host Flask app on port 5252
+EXPOSE 5252
